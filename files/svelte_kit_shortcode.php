@@ -47,10 +47,10 @@ function svelte_kit_shortcode_head() {
     if (SHORTCODE_SHADOW) return;
 
     global $post;
-    if (!has_shortcode($post->post_content, "SHORTCODE_CODE")) return;
+    if(!empty($post->post_content)) {
+        if (!has_shortcode($post->post_content, "SHORTCODE_CODE")) return;
+    }
 
     echo shortcodeHead();
 }
 add_action("wp_head", "svelte_kit_shortcode_head");
-
-?>
